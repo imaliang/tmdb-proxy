@@ -1,20 +1,40 @@
 {
-    "version": 2,
-    "redirects": [
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://github.com/imaliang/tmdb-proxy",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/t/p/:path*",
+      "destination": "https://image.tmdb.org/t/p/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/api/tmdb.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/t/p/(.*)",
+      "headers": [
         {
-            "source": "/",
-            "destination": "https://github.com/imaliang/tmdb-proxy",
-            "permanent": true
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
         }
-    ],
-    "rewrites": [
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
         {
-            "source": "/t/p/:path*",
-            "destination": "https://image.tmdb.org/t/p/:path*"
-        },
-        {
-            "source": "/:path*",
-            "destination": "/api/tmdb.js"
+          "key": "Cache-Control",
+          "value": "public, max-age=60, stale-while-revalidate=300"
         }
-    ]
+      ]
+    }
+  ]
 }
