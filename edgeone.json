@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://github.com/imaliang/tmdb-proxy",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/t/p/*",
+      "destination": "https://image.tmdb.org/t/p/:splat"
+    },
+    {
+      "source": "/*",
+      "destination": "/functions/tmdb"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/*",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ],
+  "build": {
+    "command": "npm install",
+    "outputDirectory": "."
+  }
+}

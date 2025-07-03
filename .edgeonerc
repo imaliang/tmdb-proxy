@@ -1,0 +1,21 @@
+# EdgeOne Pages 配置文件
+# 项目配置
+PROJECT_NAME=tmdb-proxy
+BUILD_COMMAND=npm install
+OUTPUT_DIRECTORY=.
+
+# 环境变量配置
+# TMDB_API_KEY=your_tmdb_api_key_here
+
+# 部署配置
+DEPLOY_BRANCH=main
+AUTO_DEPLOY=true
+
+# 缓存配置
+CACHE_DURATION=600000
+MAX_CACHE_SIZE=1000
+
+# CORS 配置
+CORS_ORIGIN=*
+CORS_METHODS=GET,POST,OPTIONS
+CORS_HEADERS=Content-Type,Authorization
