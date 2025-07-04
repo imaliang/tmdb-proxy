@@ -1,26 +1,14 @@
 {
-    "name": "tmdb-proxy",
-    "version": "1.0.0",
-    "description": "TMDB API proxy service",
-    "main": "api/tmdb.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "deploy:edgeone": "./deploy-edgeone.sh",
-        "validate:edgeone": "node -c functions/tmdb.js && node -e \"require('./edgeone.json')\""
-    },
-    "dependencies": {
-        "axios": "^1.6.7",
-        "node-fetch": "^3.3.2"
-    },
-    "engines": {
-        "node": ">=18.0.0"
-    },
-    "keywords": [
-        "tmdb",
-        "proxy",
-        "api",
-        "vercel",
-        "edgeone",
-        "serverless"
-    ]
+  "name": "tmdb-api-proxy",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TMDB API proxy service",
+  "main": "functions/[[index]].js",
+  "author": "imaliang",
+  "license": "GPL-3.0",
+  "keywords": ["tmdb", "api", "proxy", "edgeone", "movies", "tv"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imaliang/tmdb-api-proxy"
+  }
 }
