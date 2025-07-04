@@ -39,6 +39,44 @@ export async function handleRequest(request) {
         const url = new URL(request.url);
         const targetPath = url.pathname + url.search;
 
+        if (url.pathname === '/ip') {
+            const geo = request.eo.geo;
+            return new Response(JSON.stringify({
+                geo: geo,
+                timestamp: new Date().toISOString(),
+            }), {
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            });
+        }
+        if (url.pathname === '/ip2') {
+            const geo = request.eo;
+            return new Response(JSON.stringify({
+                eo: geo,
+                timestamp: new Date().toISOString(),
+            }), {
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            });
+        }
+        if (url.pathname === '/ip3') {
+            return new Response(JSON.stringify({
+                request: request,
+                timestamp: new Date().toISOString(),
+            }), {
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            });
+        }
         // 健康检查端点
         if (url.pathname === '/health' || url.pathname === '/ping') {
             return new Response(JSON.stringify({
