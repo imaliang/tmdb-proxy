@@ -8,15 +8,16 @@
 import {handleRequest} from '../src/core.js';
 
 export default async function onRequest(context) {
+// export function onRequest({ request }: { request: EORequest }) {
     const req = context.request;
 
     // 为代理创建一个合适的Request对象
-    const request = new Request(req.url, {
-        method: req.method,
-        headers: req.headers,
-        body: req.method !== 'GET' && req.method !== 'HEAD' ? req.body : null
-    });
+    // const request = new Request(req.url, {
+    //     method: req.method,
+    //     headers: req.headers,
+    //     body: req.method !== 'GET' && req.method !== 'HEAD' ? req.body : null
+    // });
 
     // 通过代理处理请求
-    return await handleRequest(request);
+    return await handleRequest(context.request);
 }
