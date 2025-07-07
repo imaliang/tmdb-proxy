@@ -17,7 +17,21 @@ export default async function onRequest(context) {
     //     headers: req.headers,
     //     body: req.method !== 'GET' && req.method !== 'HEAD' ? req.body : null
     // });
+    const url = new URL(req.url);
+    const targetPath = url.pathname + url.search;
 
+    if (url.pathname === '/all') {
+        return new Response(JSON.stringify({
+                context: context,
+                timestamp: new Date().toISOString(),
+        }), {
+            status: 200,
+            headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+            }
+        });
+    }
     // 通过代理处理请求
     return await handleRequest(context.request);
 }
